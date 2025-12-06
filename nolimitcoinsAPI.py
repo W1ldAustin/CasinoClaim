@@ -37,13 +37,13 @@ CLAIM_XPATHS = [
 ]
 
 # Read countdown from this DIV (provided path)
-COUNTDOWN_DIV_XPATH = "/html/body/div[1]/div/main/div/div[3]/div[5]/div[2]/div"
+COUNTDOWN_DIV_XPATH = "/html/body/div[1]/div/main/div/div[3]/div[4]/div[2]/div"
 
 # Optional overlay that can block clicks.
 OVERLAY_LOCATOR = (By.ID, "ModalDailyLogin")
 
 # Your exact Google chooser row (first account)
-GOOGLE_CHOOSER_PRIMARY_XPATH = "/html/body/div[2]/div[1]/div[2]/c-wiz/main/div[2]/div/div/div[1]/form/span/section/div/div/div/div/ul/li[1]/div"
+GOOGLE_CHOOSER_PRIMARY_XPATH = "/html/body/div[2]/div[1]/div[1]/div[2]/c-wiz/main/div[2]/div/div/div[1]/form/span/section/div/div/div/div/ul/li[1]/div"
 
 # Backup candidate XPaths for Google account row (handles minor A/B DOM shifts)
 GOOGLE_ACCOUNT_XPATHS = [
@@ -191,7 +191,7 @@ async def nolimitcoins_flow(ctx, driver, channel):
     if cd:
         await channel.send(f"Next No Limit Coins Bonus Available in: {cd}")
     else:
-        await channel.send("NoLimitCoins: Couldn't find 'Collect' after clicking claim. Perhaps you need to authenticate?")
+        await channel.send("[NoLimitCoins] Could not access countdown. Perhaps the x-path has changed?")
         await send_screenshot(channel, driver)
 
 async def claim_nolimitcoins_bonus(ctx, driver, channel):
