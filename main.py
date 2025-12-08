@@ -79,6 +79,7 @@ api_modules = [
     "nolimitcoinsAPI",
     "smilescasinoAPI",
     "jumboAPI",
+    "spreeAPI",
     "chipnwinAPI",
     "yaycasinoAPI",
     "luckylandAPI",
@@ -274,6 +275,7 @@ async def _run_jefebet(channel):        await jefebet_casino(None, driver, chann
 async def _run_crowncoins(channel):     await crowncoins_casino(driver, bot, None, channel)
 async def _run_smilescasino(channel):   await smilescasino_casino(None, driver, channel)
 async def _run_jumbo(channel):          await jumbo_casino(None, driver, channel)
+async def _run_spree(channel):          await spree_uc(None, channel)
 async def _run_chipnwin(channel):       await chipnwin_casino(None, driver, channel)
 async def _run_yaycasino(channel):      await yaycasino_uc(None, channel)
 async def _run_realprize(channel):      await realprize_uc(None, channel)
@@ -306,6 +308,7 @@ casino_loop_entries: List[CasinoLoopEntry] = [
     CasinoLoopEntry("jefebet",       "JefeBet",           _run_jefebet,         120),
     CasinoLoopEntry("spinquest",     "SpinQuest",         _run_spinquest,       120),
     CasinoLoopEntry("jumbo",         "Jumbo",             _run_jumbo,           120),
+    CasinoLoopEntry("spree",         "Spree",             _run_spree,           120),
     CasinoLoopEntry("chipnwin",      "Chipnwin",          _run_chipnwin,        120),
     CasinoLoopEntry("fortunewheelz", "Fortune Wheelz",    _run_fortunewheelz,   120),
     CasinoLoopEntry("nolimitcoins",  "NoLimitCoins",      _run_nlc,             120),
@@ -450,7 +453,8 @@ MANUAL_CASINO_COMMANDS = {
     "chumba","rollingriches","jefebet","spinpals","spinquest","funrize",
     "fortunewheelz","stake","chanced","luckybird","globalpoker","crowncoins",
     "dingdingding","modo","zula","sportzino","nolimitcoins","fortunecoins",
-    "smilescasino","americanluck","yaycasino", "realprize", "jumbo", "chipnwin",
+    "smilescasino","americanluck","yaycasino", "realprize", "jumbo", "spree",
+    "chipnwin",
 }
 
 @bot.check
@@ -1085,6 +1089,11 @@ async def jumbo_cmd(ctx):
     await ctx.send("Checking Jumbo for bonus...")
     await jumbo_casino(ctx, driver, bot.get_channel(DISCORD_CHANNEL))
 
+@bot.command(name="spree")
+async def spree_cmd(ctx):
+    await ctx.send("Checking Spree for bonus...")
+    await spree_uc(ctx, bot.get_channel(DISCORD_CHANNEL))
+
 @bot.command(name="chipnwin")
 async def chipnwin_cmd(ctx):
     await ctx.send("Checking Chipnwin for bonus...")
@@ -1361,7 +1370,8 @@ async def help_cmd(ctx):
 !chanced, !luckybird, !globalpoker, !crowncoins, !chumba, !modo, !zula,  
 !rollingriches, !jefebet, !spinpals, !spinquest, !funrize, !sportzino,  
 !fortunecoins, !nolimitcoins, !fortunewheelz, !stake, !dingdingding,
-!smilescasino, !yaycasino, !realprize, !luckyland, !jumbo, !chipnwin,
+!smilescasino, !yaycasino, !realprize, !luckyland, !jumbo, !spree,
+!chipnwin,
 
 ---------------------------------------  
 ✅ **Auth Commands:**  
